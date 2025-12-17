@@ -67,11 +67,15 @@ class GildedRose
 
         if ($this->isAgedBrie($item)) {
             $this->increaseQuality($item);
-        } elseif ($this->isBackstagePass($item)) {
-            $this->resetQuality($item);
-        } else {
-            $this->decreaseQuality($item);
+            return;
         }
+
+        if ($this->isBackstagePass($item)) {
+            $this->resetQuality($item);
+            return;
+        }
+
+        $this->decreaseQuality($item);
     }
 
     private function updateBackstagePassQuality(Item $item): void
