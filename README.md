@@ -41,14 +41,49 @@ git clone <url-del-repositorio>
 cd gilded-rose-php
 
 # 2. Levantar Docker
-docker-compose up -d
+make up
 
-# 3. Entrar al contenedor
-docker-compose exec php bash
+# 3. Ejecutar el ejemplo
+make example
 
-# 4. Comprobar que funciona
-php example.php
+# 4. Ejecutar los tests
+make test
 
 # 5. Cuando termines
-docker-compose down
+make down
+```
+
+## Comandos disponibles
+
+El proyecto incluye un `Makefile` con los siguientes comandos:
+
+| Comando | Descripción |
+|---------|-------------|
+| `make help` | Muestra todos los comandos disponibles |
+| `make up` | Levanta el contenedor de Docker |
+| `make down` | Detiene y elimina el contenedor |
+| `make build` | Construye la imagen de Docker |
+| `make shell` | Abre una terminal dentro del contenedor |
+| `make test` | Ejecuta los tests con PHPUnit |
+| `make example` | Ejecuta el ejemplo de funcionamiento |
+| `make install` | Instala las dependencias de Composer |
+| `make clean` | Limpia contenedores, volúmenes e imágenes |
+
+### Flujo de trabajo típico
+
+```bash
+# Iniciar el proyecto
+make up
+
+# Ver el ejemplo funcionando
+make example
+
+# Ejecutar los tests
+make test
+
+# Entrar al contenedor para trabajar
+make shell
+
+# Cuando termines
+make down
 ```
